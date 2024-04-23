@@ -12,5 +12,16 @@ jobs:
       - name: Remove branches
         run: |
           git fetch
-          branches=$(git branch -r)
-          echo $branches
+          target_branches=$(git branch -r | grep hoge-)
+
+          current_timestamp=$(date +%s)
+          for branch in $target_branches
+          do
+            branch_timestamp=$(git show -s --format='%ct')
+            diff_day=$(expr ($current_timestamp - $branch_timestamp) / 24 / 60 / 60)
+
+            if [ $diff_day -gt 14 ]; then
+              git push origin :$branch
+            fi
+            git push origin :$branch
+          done
