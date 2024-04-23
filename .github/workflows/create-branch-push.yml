@@ -1,4 +1,4 @@
-name: CI
+name: Create branches
 
 on:
   workflow_dispatch:
@@ -16,5 +16,5 @@ jobs:
           do
             branch_name=hoge-$i
             git switch -c $branch_name
-            git push origin $branch_name
+            git push -f origin $branch_name
           done
