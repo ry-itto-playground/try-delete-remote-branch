@@ -13,11 +13,15 @@ jobs:
         run: |
           git fetch
           target_branches=$(git branch -r | grep hoge-)
+          echo $target_branches
 
           current_timestamp=$(date +%s)
+          echo $current_timestamp
           for branch in $target_branches
           do
             branch_timestamp=$(git show -s --format='%ct')
+            echo $branch_timestamp
+            
             diff_day=$(expr \($current_timestamp - $branch_timestamp\) / 24 / 60 / 60)
 
             if [ $diff_day -gt 14 ]; then
