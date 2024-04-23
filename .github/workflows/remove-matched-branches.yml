@@ -12,7 +12,7 @@ jobs:
       - name: Remove branches
         run: |
           git fetch
-          target_branches=$(git branch -r | grep hoge-)
+          target_branches=$(git branch -r | sed "s/origin\///" | grep hoge-)
           echo $target_branches
 
           current_timestamp=$(date +%s)
