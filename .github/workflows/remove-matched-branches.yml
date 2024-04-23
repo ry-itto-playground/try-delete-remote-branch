@@ -24,6 +24,8 @@ jobs:
 
             diff_day=$(( ($current_timestamp - $branch_timestamp) / 24 / 60 / 60))
 
+            echo $diff_day
+
             if [ $diff_day -gt 14 ]; then
               git push origin :$branch
             fi
