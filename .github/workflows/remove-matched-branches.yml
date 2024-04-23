@@ -15,7 +15,7 @@ jobs:
           target_branches=$(git branch -r | sed "s/origin\///" | grep hoge-)
           echo $target_branches
 
-          current_timestamp=$(date -v+8d +%s)
+          current_timestamp=$(date --date '8 days' +%s)
           echo $current_timestamp
           for branch in $target_branches
           do
