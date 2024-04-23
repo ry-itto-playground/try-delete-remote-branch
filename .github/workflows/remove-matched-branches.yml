@@ -11,5 +11,5 @@ jobs:
       - uses: actions/checkout@v4
       - name: Remove branches
         run: |
-          branches=$(git branch -a)
+          branches=$(git branch -r)
           echo $branches
