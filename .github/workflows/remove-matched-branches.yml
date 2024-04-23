@@ -28,6 +28,6 @@ jobs:
 
             if [ $diff_day -gt 14 ]; then
               echo "Delete branch $branch"
-              git push origin :$branch
+              git push -q origin :$branch
             fi
           done
