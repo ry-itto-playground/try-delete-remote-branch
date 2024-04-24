@@ -10,11 +10,11 @@ jobs:
       - name: echo current payloads
         run: |
           echo "====== Event payload Start ====="
-          echo ${{ github.event.label }}
+          echo ${{ github.event.label.name }}
           echo "====== Event payload End ====="
   
           echo "====== Pull Request payload Start ====="
-          echo ${{ github.pull_request.action }}
+          echo ${{ github.event.pull_request.action }}
           echo "====== Pull Request payload End ====="
         
         
