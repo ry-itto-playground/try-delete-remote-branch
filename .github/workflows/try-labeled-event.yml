@@ -1,0 +1,20 @@
+name: Try labeled event
+on:
+  pull_request: 
+    types: [labeled, opened, reopened, ready_for_review]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo current payloads
+        run: |
+          echo "====== Event payload Start ====="
+          echo ${{ github.event }}
+          echo "====== Event payload End ====="
+  
+          echo "====== Pull Request payload Start ====="
+          echo ${{ github.pull_request }}
+          echo "====== Pull Request payload End ====="
+        
+        
