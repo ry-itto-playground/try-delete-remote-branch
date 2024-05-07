@@ -9,12 +9,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
       - name: Remove branches
         run: |
           git fetch
-          target_branches=$(git branch -r | sed "s/origin\///" | grep '^\s*companion_')
+          target_branches=$(git branch -r | sed "s/origin\///" | grep '^\s*companion_' || [[ $? == 1 ]])
 
           current_timestamp=$(date --date '15 days' +%s)
           for branch in $target_branches
