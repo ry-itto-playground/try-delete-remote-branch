@@ -12,9 +12,9 @@ jobs:
 
       - name: create multiple branch & push
         run: |
-          for i in {1..10}
+          for i in {1..100}
           do
-            branch_name=hoge-$i
+            branch_name=companion_$i
             git switch -c $branch_name
             git push -f origin $branch_name
           done
