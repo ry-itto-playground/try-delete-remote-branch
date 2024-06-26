@@ -10,6 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Remove branches
+        shell: bash
         run: |
           git fetch
           target_branches=$(git branch -r | sed "s/origin\///" | grep '^\s*companion_' || [[ $? == 1 ]])
@@ -17,7 +18,7 @@ jobs:
           current_timestamp=$(date --date '15 days' +%s)
           for branch in $target_branches
           do
-            branch_timestamp=$(git show -s --format='%ct')
+            branch_timestamp=$(git show $branch -s --format='%ct')
 
             diff_day=$(( ($current_timestamp - $branch_timestamp) / 24 / 60 / 60))
 
