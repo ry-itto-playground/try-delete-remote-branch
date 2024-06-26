@@ -13,7 +13,7 @@ jobs:
         shell: bash
         run: |
           git fetch
-          target_branches=$(git branch -r | sed "s/origin\///" | grep '^\s*companion_' || [[ $? == 1 ]])
+          target_branches=$(git branch -r | grep '^\s*origin/companion_' || [[ $? == 1 ]])
 
           current_timestamp=$(date --date '15 days' +%s)
           for branch in $target_branches
