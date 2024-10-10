@@ -16,6 +16,6 @@ jobs:
           ]
     steps:
       - name: prints
-        run: echo ${{ matrix.value.name }} ${{ matrix.value.hoge != '' && 'someValue:matrix.value.hoge' || '' }}
+        run: echo ${{ matrix.value.name }} ${{ matrix.value.hoge != '' && 'someValue:' || '' }}${{ matrix.value.hoge }}
       
     
