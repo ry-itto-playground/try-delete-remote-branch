@@ -1,0 +1,20 @@
+name: Try matrix
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        value: 
+          [
+            {name: 'aaa', hoge: 'aaa'},
+            {name: 'bbb', hoge: 'bbb'},
+            {name: 'ccc', hoge: ''}
+          ]
+    steps:
+      - name: prints
+        run: echo ${{ matrix.value.name }} ${{ matrix.value.hoge != '' && 'someValue:matrix.value.hoge' || '' }}
+      
+    
