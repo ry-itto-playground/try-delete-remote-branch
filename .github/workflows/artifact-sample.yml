@@ -1,0 +1,39 @@
+name: Artifact sample
+on:
+  push:
+    branches:
+      - artifact-sample
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create sample files
+        run: |
+          mkdir hoge
+          touch hoge/a.txt
+          touch hoge/b.txt
+
+          mkdir hoge/fuga
+          touch hoge/fuga/c.txt
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: hoge
+          path: hoge
+
+  print-artifact-result:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: hoge
+          path: hoge
+      - name: Print
+        run: |
+          pwd
+          ls -a
+
+          echo $(pwd)/hoge
+          ls -a hoge
